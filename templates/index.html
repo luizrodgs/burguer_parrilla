@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="preloader">
+    <i class="circle-preloader"></i>
+    <img src="{% static 'img/core-img/burguer.png' %}" alt="">
+</div>
+
+{% include 'partials/_navbar.html' %}
+
+<h1>Testando</h1>>
+
+{% include 'partials/_footer.html' %}
+
+{% endblock %}
