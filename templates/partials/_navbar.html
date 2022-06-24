@@ -1,9 +1,6 @@
 {% load static %}
 
-<!-- ##### Header Area Start ##### -->
 <header class="header-area">
-
-    <!-- Top Header Area -->
     <div class="top-header-area">
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-between">
@@ -13,7 +10,7 @@
                         <div id="breakingNewsTicker" class="ticker">
                             <ul>
                                 <li><a href="">Boas vindas!</a></li>
-                                <li><a href="">As melhores receitas</a></li>
+                                <li><a href="">Os melhores hamburgueres</a></li>
                                 <li><a href="">Você encontra aqui!</a></li>
                             </ul>
                         </div>
@@ -39,7 +36,7 @@
                 <nav class="classy-navbar justify-content-between" id="deliciousNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}"
+                    <a class="nav-brand" href=""><img src="{% static 'img/core-img/logo_bp.png' %}"
                             alt=""></a>
 
                     <!-- Navbar Toggler -->
@@ -55,36 +52,21 @@
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
 
-                        <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <!-- {% if user.is_authenticated %}
-                                <li><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="{% url 'dashboard' %}">Minhas Receitas</a></li>
-                                <li><a href="{% url 'cria_receita' %}">Criar Receita</a></li>
-                                <li><a href="{% url 'logout' %}">Logout</a></li>
-                                {% if user.is_superuser %}
-                                <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                                {% endif %}
-                                {% else %}
-                                <li><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                                <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
-                                {% endif %} -->
+                                <li><a href="">Home</a></li>
+                                <li><a href="{% url 'client_dashboard' %}">Clientes</a></li>
                             </ul>
 
-                            <!-- Formulario de busca -->
                             <div class="search-btn">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
-                            <!-- Formulario de busca -->
+
 
                         </div>
-                        <!-- Nav End -->
-                    </div>
+                 </div>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<!-- ##### Header Area End ##### -->
