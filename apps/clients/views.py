@@ -12,8 +12,8 @@ def client_dashboard(request):
     package = {"clients": clients_per_page}
     return render (request, 'clients/client_dashboard.html', package)
 
-def client_id(request):
-    client = get_object_or_404(Client, pk=id)
+def get_client(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
     client_to_show = {"client": client}
     return render (request, 'clients/client.html', client_to_show)
 
