@@ -1,6 +1,13 @@
 from django.urls import path
 
-from .views import *
+from .views import (
+    client_dashboard,
+    create_client,
+    delete_client,
+    edit_client,
+    get_client,
+    update_client,
+)
 
 urlpatterns = [
     path("", client_dashboard, name="client_dashboard"),
