@@ -15,23 +15,30 @@
         <div class="row">
             <h1 class="text-center">Clientes</h1>
             {% if clients %}
+            <div>
+            <div class="m-2">
+            <a href="" type="button" class="btn btn-info">Cadastrar Cliente</a></td>
+            </div>
             <table class="table table-bordered">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Número</th>
                     <th scope="col">Endereço</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
             {% for client in clients %}
                 <tr>
-                    <th scope="row"><a href="">{{ client.id }}</a></th>
                     <td><a href="">{{ client.name }}</a></td>
                     <td>{{ client.phone }}</td>
                     <td>{{ client.address }}</td>
+                    <td class="text-center"><a href="{% url 'edit_client' client.id %}" type="button" class="btn btn-warning">Editar</a></td>
+                    <td class="text-center"><a href="{% url 'delete_client' client.id %}" type="button" class="btn btn-danger">Deletar</a></td>
                 </tr>
+            </div>
             {% endfor %}
             {% else %}
             {% endif %}

@@ -31,13 +31,13 @@ def create_client(request):
     else:
         return render(request, 'clients/create_client.html')
 
-def delete_client(request):
-    client = get_object_or_404(Client, client_id)
+def delete_client(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
     client.delete()
-    return redirect (request, 'clients/client_dashboard.html')
+    return redirect('client_dashboard')
 
-def edit_client(request):
-    client = get_object_or_404(Client, client_id)
+def edit_client(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
     client_to_edit = {'client': client}
     return render (request, 'clients/edit_client.html', client_to_edit)
 
@@ -49,4 +49,4 @@ def update_client(request):
         client.phone = request.POST['client_phone']
         client.address = request.POST['client_address']
         client.save()
-    return redirect (request, 'clients/client_dashboard.html')
+    return redirect('client_dashboard')
