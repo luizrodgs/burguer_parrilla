@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+
+<!-- Receipe Content Area -->
+<div class="receipe-content-area">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="receipe-headline my-5">
+                    <h2>Nome: {{ item.name }}</h2>
+                    <div class="receipe-duration">
+                        <h6>Preço: {{ item.price }}</h6>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
