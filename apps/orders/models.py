@@ -11,7 +11,7 @@ class Order(models.Model):
         return self.client_id.name
 
 
-class OrderItems(models.Model):
+class OrderItem(models.Model):
     item_id = models.ForeignKey("products.Item", on_delete=models.CASCADE)
     order_id = models.ForeignKey("Order", on_delete=models.CASCADE)
     extras = models.ForeignKey("OrderExtra", on_delete=models.CASCADE)
