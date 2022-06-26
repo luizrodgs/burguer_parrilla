@@ -16,12 +16,3 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return self.item_id.name
-
-
-class ItemExtra(models.Model):
-    order_id = models.ForeignKey("Order", on_delete=models.CASCADE)
-    item_id = models.ForeignKey("products.Item", on_delete=models.CASCADE)
-    extra_id = models.ForeignKey("products.Extra", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.extra_id.name
