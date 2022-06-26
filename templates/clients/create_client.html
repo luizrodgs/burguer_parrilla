@@ -4,13 +4,12 @@
 
 {% include 'partials/_navbar.html' %}
  
-<!-- ##### Contact Form Area Start ##### -->
 <div class="contact-area section-padding-0-80">
    <div class="container">
        <div class="row">
            <div class="col-12">
                <div class="section-heading">
-                   <h3>Cadastrar cliente)</h3>
+                   <h3>Cadastrar cliente</h3>
                </div>
            </div>
        </div>
@@ -24,15 +23,15 @@
                        <div class="row">
                            <div class="col-12 col-lg-12">
                                <label for="client_name"><b>Nome</b></label>
-                               <input type="text" id="client_name" class="form-control" name="client_name" placeholder="Ex. João" required>
+                               <input type="text" id="client_name" class="form-control" name="client_name" placeholder="Ex: Joaquim Silva" required>
                            </div>
                            <div class="col-12">
-                               <label for="file"><b>Telefone</b></label>
-                               <textarea class="form-control" name="client_phone" cols="30" rows="10" placeholder="Ex. 91 99000-0000" required></textarea>
-                           </div>
+                            <label for="client_phone"><b>Número de telefone</b></label>
+                            <input type="text" id="client_phone" class="form-control" name="client_phone" placeholder="Ex: 91 98000-0000" value="{{client.phone}}" required>
+                            </div>
                            <div class="col-12">
                                <label for="file"><b>Endereço</b></label>
-                               <textarea class="form-control" name="client_address" cols="30" rows="10" placeholder="Ex. Rua das Laranjeiras 540" required></textarea>
+                               <textarea class="form-control" name="client_address" cols="30" rows="10" placeholder="Ex: Rua das Laranjeiras, 510" required></textarea>
                            </div>
                            <div class="col-12 text-center">
                                <button class="btn delicious-btn mt-30" type="submit">Cadastrar cliente</button>
