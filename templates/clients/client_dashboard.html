@@ -13,7 +13,28 @@
 <section class="best-receipe-area">
     <div class="container">
         <div class="row">
-            <h1>Tsetando index</h1>
+            <h1 class="text-center">Clientes</h1>
+            {% if clients %}
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Endereço</th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for client in clients %}
+                <tr>
+                    <th scope="row"><a href="">{{ client.id }}</a></th>
+                    <td><a href="">{{ client.name }}</a></td>
+                    <td>{{ client.phone }}</td>
+                    <td>{{ client.address }}</td>
+                </tr>
+            {% endfor %}
+            {% else %}
+            {% endif %}
         </div>
     </div>
 </section>
