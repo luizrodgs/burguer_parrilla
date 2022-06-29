@@ -16,6 +16,10 @@
                         <h6>Telefone: {{ client.phone }}</h6>
                         <h6>Endereço: {{ client.address }}</h6>
                     </div>
+                    <div>
+                        <h6 class="text-left mt-4"><a href="{% url 'edit_client' client.id %}" type="button" class="btn btn-warning">Editar</a></h6>
+                        <h6 class="text-left"><a href="{% url 'delete_client' client.id %}" type="button" class="btn btn-danger">Deletar</a></h6>
+                    </div>
                 </div>
             </div>
 

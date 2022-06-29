@@ -9,7 +9,7 @@ def item_dashboard(request):
     paginator = Paginator(itens, 30)
     page = request.GET.get("page")
     items_per_page = paginator.get_page(page)
-    package = {"itens": items_per_page}
+    package = {"items": items_per_page}
     return render(request, "items/item_dashboard.html", package)
 
 

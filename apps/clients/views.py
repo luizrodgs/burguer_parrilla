@@ -20,10 +20,6 @@ def get_client(request, client_id):
     return render(request, "clients/client.html", client_to_show)
 
 
-# def search(request):
-#     return render (request, 'index.html')
-
-
 def create_client(request):
     if request.method == "POST":
         name = request.POST["client_name"]

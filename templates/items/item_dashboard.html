@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Itens</h1>
-            {% if itens %}
+            {% if items %}
             <div>
             <div class="m-2">
             <a href="{% url 'create_item' %}" type="button" class="btn btn-info">Cadastrar Item</a></td>
@@ -24,15 +24,13 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Preço</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-            {% for item in itens %}
+            {% for item in items %}
                 <tr>
-                    <td><a href="">{{ item.name }}</a></td>
-                    <td>{{ item.price }}</td>
+                    <td><a href="{% url 'get_item' item.id %}">{{ item.name }}</a></td>
+                    <td>R$ {{ item.price }}</td>
                     <td class="text-center"><a href="{% url 'edit_item' item.id %}" type="button" class="btn btn-warning">Editar</a></td>
                     <td class="text-center"><a href="{% url 'delete_item' item.id %}" type="button" class="btn btn-danger">Deletar</a></td>
                 </tr>

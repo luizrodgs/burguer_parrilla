@@ -32,7 +32,7 @@
                     <tbody>
                 {% for client in clients %}
                     <tr>
-                        <td><a href="">{{ client.name }}</a></td>
+                        <td><a href="{% url 'get_client' client.id %}">{{ client.name }}</a></td>
                         <td>{{ client.phone }}</td>
                         <td>{{ client.address }}</td>
                         <td class="text-center"><a href="{% url 'edit_client' client.id %}" type="button" class="btn btn-warning">Editar</a></td>
