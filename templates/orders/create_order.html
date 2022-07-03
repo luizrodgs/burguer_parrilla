@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+ 
+<div class="contact-area section-padding-0-80">
+   <div class="container">
+       <div class="row">
+           <div class="col-12">
+               <div class="section-heading">
+                   <h3>Criar Pedido</h3>
+               </div>
+           </div>
+       </div>
+ 
+       <div class="row">
+           <div class="col-12">
+           <p>Todos os campos são obrigatórios</p>
+               <div class="contact-form-area">
+                   <form action="{% url 'create_order' %}" method="post" enctype="multipart/form-data">
+                           {% csrf_token %}
+                       <div class="row">
+                           <div class="col-12 col-lg-12">
+                               <label for="client"><b>Cliente</b></label>
+                               <input type="text" id="client" class="form-control" name="client" placeholder="Ex: Joaquim Silva" required>
+                           </div>
+                           <div class="col-12 text-center">
+                               <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+ 
+{% endblock %}

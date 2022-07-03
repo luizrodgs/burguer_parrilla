@@ -22,21 +22,25 @@
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">Cliente</th>
                         <th scope="col">Endereço</th>
+                        <th scope="col">Itens</th>
+                        <th scope="col">Obs</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                {% for client in clients %}
+                {% for order in orders %}
                     <tr>
-                        <td><a href="{% url 'get_client' client.id %}">{{ client.name }}</a></td>
-                        <td>{{ client.phone }}</td>
-                        <td>{{ client.address }}</td>
-                        <td class="text-center"><a href="{% url 'edit_client' client.id %}" type="button" class="btn btn-warning">Editar</a></td>
-                        <td class="text-center"><a href="{% url 'delete_client' client.id %}" type="button" class="btn btn-danger">Deletar</a></td>
+                        <td><a href="{% url 'get_order' order.id %}">{{ order.id }}</a></td>
+                        <td>Nome do cliente</td>
+                        <td>Endereço de entrega</td>
+                        <td>Itens do pedido</td>
+                        <td>Observação do pedido</td>
+                        <td class="text-center"><a href="{% url 'edit_order' order.id %}" type="button" class="btn btn-warning">Editar</a></td>
+                        <td class="text-center"><a href="{% url 'delete_order' order.id %}" type="button" class="btn btn-danger">Deletar</a></td>
                     </tr>
                 {% endfor %}
             {% else %}

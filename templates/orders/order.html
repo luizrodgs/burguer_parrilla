@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+
+<!-- Receipe Content Area -->
+<div class="receipe-content-area">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="receipe-headline my-5">
+                    <h2>Pedido: {{ order.id }}</h2>
+                    <div class="receipe-duration">
+                        <h6>Cliente: </h6>
+                        <h6>Endereço: </h6>
+                        <h6>Data: </h6>
+                        <h6>Itens: </h6>
+                        <h6>Observação: </h6>
+                    </div>
+                    <div>
+                        <h6 class="text-left mt-4"><a href="{% url 'edit_order' order.id %}" type="button" class="btn btn-warning">Editar</a></h6>
+                        <h6 class="text-left"><a href="{% url 'delete_order' order.id %}" type="button" class="btn btn-danger">Deletar</a></h6>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
