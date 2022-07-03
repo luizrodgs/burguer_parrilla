@@ -13,12 +13,12 @@
 <section class="best-receipe-area">
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Clientes</h1>
+            <h1 class="text-center">Pedidos</h1>
             <div>
                 <div class="m-2">
-                    <a href="{% url 'create_client' %}" type="button" class="btn btn-info">Cadastrar Cliente</a></td>
+                    <a href="{% url 'create_order' %}" type="button" class="btn btn-info">Criar Pedido</a></td>
                 </div>
-                {% if clients %}
+                {% if orders %}
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                     <tr>

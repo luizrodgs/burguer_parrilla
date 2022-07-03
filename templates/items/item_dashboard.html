@@ -14,11 +14,11 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Itens</h1>
-            {% if items %}
             <div>
             <div class="m-2">
             <a href="{% url 'create_item' %}" type="button" class="btn btn-info">Cadastrar Item</a></td>
             </div>
+            {% if items %}
             <table class="table table-bordered">
                 <thead class="thead-dark">
                 <tr>
