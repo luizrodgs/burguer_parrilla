@@ -5,15 +5,17 @@ from .views import (
     delete_order,
     edit_order,
     get_order,
+    index,
     order_dashboard,
     update_order,
 )
 
 urlpatterns = [
-    path("", order_dashboard, name="order_dashboard"),
-    path("<int:order_id>", get_order, name="get_order"),
-    path("criar", create_order, name="create_order"),
-    path("deletar/<int:order_id>", delete_order, name="delete_order"),
-    path("editar/<int:order_id>", edit_order, name="edit_order"),
-    path("atualizar", update_order, name="update_order"),
+    path("", index, name="index"),
+    path("pedidos/dashboard", order_dashboard, name="order_dashboard"),
+    path("pedidos/<int:order_id>", get_order, name="get_order"),
+    path("pedidos/criar", create_order, name="create_order"),
+    path("pedidos/deletar/<int:order_id>", delete_order, name="delete_order"),
+    path("pedidos/editar/<int:order_id>", edit_order, name="edit_order"),
+    path("pedidos/atualizar", update_order, name="update_order"),
 ]

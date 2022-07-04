@@ -50,20 +50,29 @@
 
                         <div class="classynav">
                             <ul>
-                                <li><a href="{% url 'client_dashboard' %}">Clientes</a></li>
+                                {% if user.is_authenticated %}
+                                {% if user.is_superuser %}
                                 <li><a href="{% url 'order_dashboard' %}">Pedidos</a></li>
+                                <li><a href="{% url 'client_dashboard' %}">Clientes</a></li>
                                 <li><a href="{% url 'item_dashboard' %}">Itens</a></li>
-                                <li><a href="">Login</a></li>
-
+                                <li><a href="{% url 'logout' %}">Sair</a></li>
+                                <li><a href="/admin">Admin</a></li>
+                                {% else %}
+                                <li><a href="{% url 'order_dashboard' %}">Pedidos</a></li>
+                                <li><a href="{% url 'client_dashboard' %}">Clientes</a></li>
+                                <li><a href="{% url 'item_dashboard' %}">Itens</a></li>
+                                <li><a href="{% url 'logout' %}">Sair</a></li>
+                                {% endif %}
+                                {% else %}
+                                <li><a href="{% url 'login' %}">Entrar</a></li>
+                                <li><a href="{% url 'create_user' %}">Criar Conta</a></li>
+                                {% endif %}
                             </ul>
-
-                            <div class="search-btn">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div>
-
-
                         </div>
-                 </div>
+                    </div>
+                 <div class="search-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
                 </nav>
             </div>
         </div>
