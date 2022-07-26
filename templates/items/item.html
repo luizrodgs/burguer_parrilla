@@ -13,13 +13,15 @@
                 <div class="receipe-headline my-5">
                     <h2>Nome: {{ item.name }}</h2>
                     <div class="receipe-duration">
-                        <h6>Preço: R$ {{ item.price }}</h6>
+                        <h6>Preço: R$ {{ item.price|floatformat:2 }}</h6>
                     </div>
                     <div>
-                        <h6 class="text-left mt-4"><a href="{% url 'edit_item' item.id %}" type="button" class="btn btn-warning">Editar</a></h6>
-                        <h6 class="text-left"><a href="{% url 'delete_item' item.id %}" type="button" class="btn btn-danger">Deletar</a></h6>
+                        <h6 class="text-left mt-4"><a href="{% url 'edit_item' item.id %}" type="button"
+                                class="btn btn-warning">Editar</a></h6>
+                        <h6 class="text-left"><a href="{% url 'delete_item' item.id %}" type="button"
+                                class="btn btn-danger">Deletar</a></h6>
                     </div>
                 </div>
             </div>
 
-{% endblock %}
+            {% endblock %}

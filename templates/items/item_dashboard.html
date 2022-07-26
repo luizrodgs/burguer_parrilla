@@ -15,25 +15,29 @@
         <div class="row">
             <h1 class="text-center">Itens</h1>
             <div>
-            <div class="m-2">
-            <a href="{% url 'create_item' %}" type="button" class="btn btn-info">Cadastrar Item</a></td>
-            </div>
-            {% if items %}
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Preço</th>
-                </tr>
-                </thead>
-                <tbody>
-            {% for item in items %}
-                <tr>
-                    <td><a href="{% url 'get_item' item.id %}">{{ item.name }}</a></td>
-                    <td>R$ {{ item.price }}</td>
-                    <td class="text-center"><a href="{% url 'edit_item' item.id %}" type="button" class="btn btn-warning">Editar</a></td>
-                    <td class="text-center"><a href="{% url 'delete_item' item.id %}" type="button" class="btn btn-danger">Deletar</a></td>
-                </tr>
+                <div class="m-2">
+                    <a href="{% url 'create_item' %}" type="button" class="btn btn-info">Cadastrar Item</a></td>
+                </div>
+                {% if items %}
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td><a href="{% url 'get_item' item.id %}">{{ item.name }}</a></td>
+                            <td>R$ {{ item.price|floatformat:2 }}</td>
+                            <td class="text-center"><a href="{% url 'edit_item' item.id %}" type="button"
+                                    class="btn btn-warning">Editar</a></td>
+                            <td class="text-center"><a href="{% url 'delete_item' item.id %}" type="button"
+                                    class="btn btn-danger">Deletar</a></td>
+                        </tr>
             </div>
             {% endfor %}
             {% else %}
