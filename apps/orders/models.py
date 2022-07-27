@@ -10,10 +10,9 @@ class Order(models.Model):
         return self.client_id.name
 
 
-class OrderProduct(models.Model):
+class OrderItem(models.Model):
     order_id = models.ForeignKey("Order", on_delete=models.CASCADE)
-    product_id = models.ForeignKey("products.Product", on_delete=models.CASCADE)
-    obs = models.CharField(max_length=30)
+    item_id = models.ForeignKey("products.Item", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.product_id.name
+        return self.item_id.name
