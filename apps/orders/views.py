@@ -2,11 +2,13 @@ from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import OrderForm
 from .models import Order
 
 
 def index(request):
     return render(request, "index.html")
+
 
 def order_dashboard(request):
     if request.user.is_authenticated:
@@ -28,7 +30,10 @@ def get_order(request, order_id):
     else:
         return redirect("index")
 
+
 def create_order(request):
+    form = OrderForm()
+    context = {'form': form}
     if request.user.is_authenticated:
         if request.method == "POST":
             name = request.POST["order_name"]
@@ -37,10 +42,10 @@ def create_order(request):
             order = Order.objects.create(name=name, phone=phone, address=address)
             order.save()
             return redirect("order_dashboard")
-        else:
-            return render(request, "orders/create_order.html")
-    else:
-        return redirect("index")
+
+        return render(request, "orders/create_order.html", context)
+
+    return redirect("index")
 
 
 def delete_order(request, order_id):
@@ -51,6 +56,7 @@ def delete_order(request, order_id):
     else:
         return redirect("index")
 
+
 def edit_order(request, order_id):
     if request.user.is_authenticated:
         order = get_object_or_404(Order, pk=order_id)
@@ -58,6 +64,7 @@ def edit_order(request, order_id):
         return render(request, "orders/edit_order.html", order_to_edit)
     else:
         return redirect("index")
+
 
 def update_order(request):
     if request.user.is_authenticated:

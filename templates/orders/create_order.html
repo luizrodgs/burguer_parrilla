@@ -20,12 +20,14 @@
                <div class="contact-form-area">
                    <form action="{% url 'create_order' %}" method="post" enctype="multipart/form-data">
                            {% csrf_token %}
-                       <div class="row">
+                           {% for field in form.visible_fields %}
+                           <div class="row">
                            <div class="col-12 col-lg-12">
-                               <label for="client"><b>Cliente</b></label>
-                               <input type="text" id="client" class="form-control" name="client" placeholder="Ex: Joaquim Silva" required>
-                           </div>
-                           <div class="col-12 text-center">
+                               <label for="{{ field.label }}"><b>{{ field.name }}</b></label>
+                           <input type="text" id="{{ field.label }}" class="form-control" name="client_name" required>
+                           {% endfor %}
+                            </div>
+                            <div class="col-12 text-center">
                                <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
                            </div>
                        </div>
