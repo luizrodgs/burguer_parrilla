@@ -3,31 +3,39 @@
 {% block content %}
 
 {% include 'partials/_navbar.html' %}
- 
+
 <div class="contact-area section-padding-0-80">
-   <div class="container">
-       <div class="row">
-           <div class="col-12">
-               <div class="section-heading">
-                   <h3>Criar Pedido</h3>
-               </div>
-           </div>
-       </div>
- 
-       <div class="row">
-           <div class="col-12">
-           <p>Todos os campos são obrigatórios</p>
-               <div class="contact-form-area">
-                   <form action="{% url 'create_order' %}" method="post" enctype="multipart/form-data">
-                           {% csrf_token %}
-                           <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Criar Pedido</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p>Todos os campos são obrigatórios</p>
+                <div class="contact-form-area">
+                    <form action="{% url 'create_order' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mb-3">
                             <div class="col-12 col-lg-12">
-                           {{ client_form }}
-                           </div>
+                                <div class="">
+                                    {{ order_form }}
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-lg-12">
-                                {{ order_form }}
+                                {{ client_form }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                {{ orderproduct_form }}
                             </div>
                         </div>
                         <div class="row">
@@ -40,20 +48,15 @@
                                 {{ orderproduct_form }}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-lg-12">
-                                {{ orderproduct_form }}
-                            </div>
+                        <div class="col-12 text-center">
+                            <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
                         </div>
-                            <div class="col-12 text-center">
-                               <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
-   </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
- 
+</div>
+
 {% endblock %}
