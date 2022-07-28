@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import ClientForm, OrderForm, OrderProductForm
+from .forms import OrderForm
 from .models import Order
 
 
@@ -33,13 +33,7 @@ def get_order(request, order_id):
 
 def create_order(request):
     order_form = OrderForm()
-    orderproduct_form = OrderProductForm()
-    client_form = ClientForm()
-    context = {
-        "client_form": client_form,
-        "order_form": order_form,
-        "orderproduct_form": orderproduct_form,
-    }
+    context = {"order_form": order_form}
     if request.user.is_authenticated:
         if request.method == "POST":
             name = request.POST["order_name"]
