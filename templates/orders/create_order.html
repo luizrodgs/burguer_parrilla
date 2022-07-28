@@ -22,19 +22,25 @@
                         {% csrf_token %}
                         <div class="row mb-3">
                             <div class="col-12 col-lg-12">
-                                <div class="">
-                                    {{ order_form }}
+                                <!-- {% for field in order_form %}
+                                <div class="form-group">
+                                    {{ field.label }} {{ field }}
                                 </div>
+                                {% endfor %} -->
+
+
+                                {{ order_form }}
                             </div>
                         </div>
-                        <div class="col-12 text-center">
-                            <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
-                        </div>
                 </div>
-                </form>
+                <div class="col-12 text-center">
+                    <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
+                </div>
             </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 </div>
 
