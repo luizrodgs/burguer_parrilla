@@ -1,7 +1,13 @@
 from datetime import datetime
 
 from clients.models import Client
-from django.forms import CharField, DateTimeField, Form, ModelMultipleChoiceField
+from django.forms import (
+    CharField,
+    DateTimeField,
+    Form,
+    ModelMultipleChoiceField,
+    Textarea,
+)
 from products.models import Product
 
 from .models import Order
@@ -15,4 +21,6 @@ class OrderForm(Form):
     products = ModelMultipleChoiceField(
         queryset=Product.objects.all(), label="Produtos"
     )
-    obs = CharField(max_length=100, required=False)
+    obs = CharField(
+        label="Observação:", max_length=300, required=False, widget=Textarea
+    )

@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 
 {% include 'partials/_navbar.html' %}
 
-<div class="contact-area section-padding-0-80">
+<div class="contact-area section-padding-0-20">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -13,48 +14,25 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-12">
-                <p>Todos os campos são obrigatórios</p>
-                <div class="contact-form-area">
-                    <form action="{% url 'create_order' %}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="mb-3">
-                                {{ order_form.ord.label }}
-                                {{ order_form.ord }}
-                            </div>
-                            <div>
-                                {{ order_form.date.label }}
-                                {{ order_form.date }}
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div>
-                                <div class="mt-3">
-                                    {{ order_form.client.label }}
-                                    {{ order_form.client }}
-                                </div>
-                            </div>
-                            <div>
-                                <div class="mt-3">
-                                    {{ order_form.products.label }}
-                                    {{ order_form.products }}
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                {{ order_form.obs.label }} {{ order_form.obs }}
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-12 text-center">
-                <button class="btn delicious-btn mt-30" type="submit">Criar Pedido</button>
-            </div>
-            </form>
-        </div>
     </div>
+</div>
+
+<div class="container">
+    <form>
+        {% csrf_token %}
+        {% for field in order_form.visible_fields %}
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}"> {{ field.label }} </label>
+                {{ field|add_class:'form-control' }}
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-12 text-center">
+    <button class="btn delicious-btn mt-30" type="submit">Cadastrar Pedido</button>
 </div>
 
 {% endblock %}
