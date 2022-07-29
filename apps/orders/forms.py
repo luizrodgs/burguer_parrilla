@@ -15,4 +15,4 @@ class OrderForm(Form):
     products = ModelMultipleChoiceField(
         queryset=Product.objects.all(), label="Produtos"
     )
-    obs = CharField(max_length=100)
+    obs = CharField(max_length=100, required=False)
