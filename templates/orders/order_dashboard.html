@@ -35,10 +35,10 @@
                 {% for order in orders %}
                     <tr>
                         <td><a href="{% url 'get_order' order.id %}">{{ order.id }}</a></td>
-                        <td>Nome do cliente</td>
-                        <td>Endereço de entrega</td>
+                        <td>{{ order.client_id }}</td>
+                        <td>{{ order.client_id.address }}</td>
                         <td>Itens do pedido</td>
-                        <td>Observação do pedido</td>
+                        <td>{{ order.obs }}</td>
                         <td class="text-center"><a href="{% url 'edit_order' order.id %}" type="button" class="btn btn-warning">Editar</a></td>
                         <td class="text-center"><a href="{% url 'delete_order' order.id %}" type="button" class="btn btn-danger">Deletar</a></td>
                     </tr>

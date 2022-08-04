@@ -3,7 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import OrderForm
-from .models import Order
+from .models import Order, OrderProduct
 
 
 def index(request):
@@ -32,19 +32,23 @@ def get_order(request, order_id):
 
 
 def create_order(request):
-    order_form = OrderForm()
+    order_form = OrderForm(request.POST)
     context = {"order_form": order_form}
     if request.user.is_authenticated:
         if request.method == "POST":
-            name = request.POST["order_name"]
-            phone = request.POST["order_phone"]
-            address = request.POST["order_address"]
-            order = Order.objects.create(name=name, phone=phone, address=address)
-            order.save()
-            return redirect("order_dashboard")
-
+            if order_form.is_valid():
+                order = order_form.clean()
+                Order.objects.create(
+                    client_id=order["client"].first(),
+                    obs=order["obs"],
+                    date=order["date"],
+                )
+                OrderProduct.objects.create(
+                    order_id=Order.objects.last(),
+                    product_id=order["products"].first(),
+                )
+                return redirect("order_dashboard")
         return render(request, "orders/create_order.html", context)
-
     return redirect("index")
 
 
