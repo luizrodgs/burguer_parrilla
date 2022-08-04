@@ -15,7 +15,13 @@ from .models import Order
 
 class OrderForm(Form):
     order = Order.objects.all().last()
-    ord = CharField(label="Número do pedido:", disabled=True, initial=order.id + 1)
+
+    if order:
+        order_id = order.id + 1
+    else:
+        order_id = 1
+
+    ord = CharField(label="Número do pedido:", disabled=True, initial=order_id)
     date = DateTimeField(label="Data do pedido:", disabled=True, initial=datetime.today)
     client = ModelMultipleChoiceField(queryset=Client.objects.all(), label="Cliente")
     products = ModelMultipleChoiceField(

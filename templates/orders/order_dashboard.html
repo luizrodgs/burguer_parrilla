@@ -37,7 +37,13 @@
                         <td><a href="{% url 'get_order' order.id %}">{{ order.id }}</a></td>
                         <td>{{ order.client_id }}</td>
                         <td>{{ order.client_id.address }}</td>
-                        <td>Itens do pedido</td>
+                        {% if order.products.values.count > 0 %}
+                            <td>{% for produtc in order.products.all %}
+                                    {{ produtc.name }}
+                                {% endfor %}</td>
+                        {% else %}
+                            <td>Nenhum</td>
+                        {% endif %}
                         <td>{{ order.obs }}</td>
                         <td class="text-center"><a href="{% url 'edit_order' order.id %}" type="button" class="btn btn-warning">Editar</a></td>
                         <td class="text-center"><a href="{% url 'delete_order' order.id %}" type="button" class="btn btn-danger">Deletar</a></td>
