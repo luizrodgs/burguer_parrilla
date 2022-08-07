@@ -3,45 +3,45 @@
 {% block content %}
 
 {% include 'partials/_navbar.html' %}
- 
+
 <div class="contact-area section-padding-0-80">
-   <div class="container">
-       <div class="row">
-           <div class="col-12">
-               <div class="section-heading">
-                   <h3>Cadastrar cliente</h3>
-               </div>
-           </div>
-       </div>
- 
-       <div class="row">
-           <div class="col-12">
-           <p>Todos os campos são obrigatórios</p>
-               <div class="contact-form-area">
-                   <form action="{% url 'create_client' %}" method="post" enctype="multipart/form-data">
-                           {% csrf_token %}
-                       <div class="row">
-                           <div class="col-12 col-lg-12">
-                               <label for="client_name"><b>Nome</b></label>
-                               <input type="text" id="client_name" class="form-control" name="client_name" placeholder="Ex: Joaquim Silva" required>
-                           </div>
-                           <div class="col-12">
-                            <label for="client_phone"><b>Número de telefone</b></label>
-                            <input type="text" id="client_phone" class="form-control" name="client_phone" placeholder="Ex: 91 98000-0000" value="{{client.phone}}" required>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Cadastrar cliente</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p>Todos os campos são obrigatórios</p>
+                <div class="contact-form-area">
+                    <form action="{% url 'create_client' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %} {% for field in form %}
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <label for="{{field.name}}"><b>{{field.label}}</b></label>
+                                {% if field.widget_type == 'text' or field.widget_type == "datetime"%}
+                                <input type="text" id="{{field.name}}" class="form-control" name="{{field.name}}"
+                                    placeholder="{{field.placeholder}}" value="{{field.value}}" required />
+                                {% endif %}
+                                {% if field.widget_type == 'textarea' %}
+                                <textarea class="form-control" name="{{field.label}}" cols="30" rows="10"
+                                    placeholder="{{field.placeholder}}" required>{{field.value}}</textarea>
+                                {% endif %}
                             </div>
-                           <div class="col-12">
-                               <label for="file"><b>Endereço</b></label>
-                               <textarea class="form-control" name="client_address" cols="30" rows="10" placeholder="Ex: Rua das Laranjeiras, 510" required></textarea>
-                           </div>
-                           <div class="col-12 text-center">
-                               <button class="btn delicious-btn mt-30" type="submit">Cadastrar cliente</button>
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
-   </div>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12 text-center">
+                            <button class="btn delicious-btn mt-30" type="submit">Cadastrar cliente</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
- 
+
 {% endblock %}

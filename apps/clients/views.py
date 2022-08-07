@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import ClientForm
 from .models import Client
 
 
@@ -25,13 +26,16 @@ def get_client(request, client_id):
 @login_required(login_url="login")
 def create_client(request):
     if request.method == "POST":
-        name = request.POST["client_name"]
-        phone = request.POST["client_phone"]
-        address = request.POST["client_address"]
-        client = Client.objects.create(name=name, phone=phone, address=address)
-        client.save()
-        return redirect("client_dashboard")
-    return render(request, "clients/create_client.html")
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            Client.objects.create(
+                name=form.cleaned_data["name"],
+                phone=form.cleaned_data["phone"],
+                address=form.cleaned_data["address"],
+            )
+            return redirect("client_dashboard")
+    form = ClientForm()
+    return render(request, "clients/create_client.html", {"form": form})
 
 
 @login_required(login_url="login")
