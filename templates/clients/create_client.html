@@ -19,26 +19,27 @@
                 <p>Todos os campos são obrigatórios</p>
                 <div class="contact-form-area">
                     <form action="{% url 'create_client' %}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %} {% for field in form %}
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-12 col-lg-12">
+                                {% for field in form %}
                                 <label for="{{field.name}}"><b>{{field.label}}</b></label>
-                                {% if field.widget_type == 'text' or field.widget_type == "datetime"%}
-                                <input type="text" id="{{field.name}}" class="form-control" name="{{field.name}}"
-                                    placeholder="{{field.placeholder}}" value="{{field.value}}" required />
+                                {% if field.widget_type == 'text' or field.widget_type == "datetime" %}
+                                <input class="form-control" type="text" id="{{field.name}}" name="{{field.name}}"
+                                    placeholder="{{field.label}}" required />
                                 {% endif %}
                                 {% if field.widget_type == 'textarea' %}
-                                <textarea class="form-control" name="{{field.label}}" cols="30" rows="10"
-                                    placeholder="{{field.placeholder}}" required>{{field.value}}</textarea>
+                                <textarea class="form-control" id="{{field.name}}" name="{{field.name}}" cols="30"
+                                    rows="10" required></textarea>
                                 {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
-                        {% endfor %}
                         <div class="col-12 text-center">
                             <button class="btn delicious-btn mt-30" type="submit">Cadastrar cliente</button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>

@@ -28,11 +28,7 @@ def create_client(request):
     if request.method == "POST":
         form = ClientForm(request.POST)
         if form.is_valid():
-            Client.objects.create(
-                name=form.cleaned_data["name"],
-                phone=form.cleaned_data["phone"],
-                address=form.cleaned_data["address"],
-            )
+            form.save()
             return redirect("client_dashboard")
     form = ClientForm()
     return render(request, "clients/create_client.html", {"form": form})
